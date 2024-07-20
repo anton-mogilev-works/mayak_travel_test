@@ -1,0 +1,6 @@
+{
+    "emmet.includeLanguages": {
+        "Item": "twig",
+        "Value": "html"
+    }
+}

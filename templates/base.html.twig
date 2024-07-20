@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mayak parser{% endblock %}</title>
+
+    <style>
+        body {
+            margin: 0 auto;
+            padding-top: 30px;
+            width: 1000px;
+        }
+
+        div.form-wrapper {
+            text-align: center;
+            margin-bottom: 50px;
+        }        
+
+        form.main-form input[type="text"]{
+            height: 25px;
+            font-size: 22px;
+        }
+
+        form.main-form button[type="submit"]{
+            height: 32px;
+            font-size: 22px;
+            cursor: pointer;
+            
+        }
+    </style>
+    {% block stylesheets %}
+
+    {% endblock %}
+
+    {% block javascripts %}
+    {# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
+    {% endblock %}
+</head>
+
+<body>
+    {% block body %}{% endblock %}
+
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parse result{% endblock %}
+
+{% block stylesheets %}
+<style>
+    div.result-by-images {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+
+    div.result-by-images a.element {
+        width: 250px;
+        flex: none;
+        text-decoration: none;
+        align-content: center;
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    div.result-by-images a.element:hover {
+        background-color: burlywood;
+    }
+
+    div.result-by-images a.element img {
+        width: 240px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    div.result-by-images a.element span {
+        display: inline;
+
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="form-wrapper">
+    <form action="/result" method="post" class="main-form">
+        <input type="text" placeholder="URL" value="{{url}}" name="url" />
+        <button type="submit" name="go">Go</button>
+    </form>
+</div>
+
+{% if errorMessage is defined %}
+<div style="color: red;">
+    {{ errorMessage }}
+</div>
+{% endif %}
+
+{% if resultData is defined %}
+<div class="result-by-images">
+
+    {% for entry in resultData %}
+    <a href="{{ entry.imagePath }}" target="_blank" class="element">
+        <div>
+            <img src="{{ entry.imagePath }}" />
+        </div>
+        <br /> 
+        <span>{{ (entry.fileSize / 1024)|round(1, 'floor') }} Кб</span>
+    </a>
+    {% endfor %}
+</div>
+
+{% if counter is defined %}
+Всего изображений: {{ counter }} 
+{% endif %}
+<br />
+<br />
+
+{% if finalSize is defined %}
+Суммарный размер изображений: {{ ( finalSize / 1048576 )|round(1, 'floor') }} Мб
+{% endif %}
+
+<br />
+<br />
+<br />
+<br />
+
+{% endif %}
+
+
+{% endblock %}

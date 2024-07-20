@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Go{% endblock %}
+
+{% block body %}
+
+<div class="form-wrapper">
+    <form action="/result" method="post" class="main-form">
+        <input type="text" placeholder="URL" name="url" />
+        <button type="submit name=" go">Go</button>
+    </form>
+</div>
+
+{% endblock %}
